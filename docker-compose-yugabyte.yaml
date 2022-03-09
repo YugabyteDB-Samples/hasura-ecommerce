@@ -22,6 +22,7 @@ services:
       container_name: yb-tserver-n1
       volumes:
       - yb-tserver-data-1:/mnt/tserver
+      - ./hasura/seeds:/mnt/seed_data
       command: [ "/home/yugabyte/bin/yb-tserver",
                 "--fs_data_dirs=/mnt/tserver",
                 "--webserver_port=9001",
@@ -116,6 +117,5 @@ services:
 
 volumes:
   minio_data:
-  hasura_ci_db_data:
   yb-master-data-1:
   yb-tserver-data-1:

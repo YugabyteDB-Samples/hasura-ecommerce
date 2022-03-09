@@ -190,3 +190,14 @@ This application follows the 3 Factor App principles which are composed of robus
     ```bash
     docker volume rm $(docker volume ls -q)
     ```    
+
+Perf (86,550 rows - fat records, a lot of text for product's description):
+
+* Multiple INSERTS => single INSERT statement:
+0.31s user 0.32s system 0% cpu 1:04.34 total
+
+* Next, wrapped in a single transaction:
+0.29s user 0.27s system 1% cpu 42.996 total
+
+* Finally, disabled triggers:
+0.30s user 0.27s system 1% cpu 43.586 total
