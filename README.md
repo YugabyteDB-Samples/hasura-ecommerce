@@ -111,9 +111,10 @@ Visit http://localhost:9001 for Yugabyte TServer UI
     cp cloud.config.yaml config.yaml
     ```
 
-4. Open the `config.yaml` file and provide `endpoint` and `admin_secret` settings: 
+4. Open the `config.yaml` file and initialize two parameters: 
+    * `endpoint` - use the value of the `GraphQL API` property of your Hasura Cloud project (without `/v1/graphql` in the end)
+    * `admin_secret` - use the value of the `Admin Secret` property.
 
-    The settings can be found on your Hasura Cloud project's dashboard:
     ![hasura endpoint configuration](images/hasura_endpoint.png)
 
 5. 
