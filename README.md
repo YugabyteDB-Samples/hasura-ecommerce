@@ -114,7 +114,7 @@ Visit http://localhost:9001 for Yugabyte TServer UI
 4. Open the `config.yaml` file and provide `endpoint` and `admin_secret` settings: 
 
     The settings can be found on your Hasura Cloud project's dashboard:
-    ![hasura endpoint configuration](Images/example.png)
+    ![hasura endpoint configuration](images/hasura_endpoint.png)
 
 5. 
 
