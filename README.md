@@ -29,9 +29,13 @@ The Hasura and Yugabyte e-commerce app is a full featured reference application 
 <!-- /vscode-markdown-toc -->
 
 ## Prerequisite
-1. Docker and Docker Compose installed. [Install instructions.](https://docs.docker.com/get-docker/)
-2. Stripe Secret and Publishable keys. _The account doesn't need to be verified as no transactions will be happening._ [Instructions here.](https://stripe.com/docs/keys)
-3. Hasura CLI installed. [Instructions here.](https://hasura.io/docs/latest/graphql/core/hasura-cli/install-hasura-cli.html)
+1. Hasura CLI installed. [Instructions here.](https://hasura.io/docs/latest/graphql/core/hasura-cli/install-hasura-cli.html)
+2. (Optional) Stripe Secret and Publishable keys. _The account doesn't need to be verified as no transactions will be happening._ [Instructions here.](https://stripe.com/docs/keys)
+3. Local Deployments:
+    * Docker and Docker Compose installed. [Install instructions.](https://docs.docker.com/get-docker/)
+4. Cloud Deploymets:
+    * Hasura Cloud Instance/Project. [Insturctions here](https://hasura.io/docs/latest/graphql/cloud/getting-started/index.html)
+    * Yugabyte Cloud Instance. [Instructions here](https://docs.yugabyte.com/latest/yugabyte-cloud/cloud-quickstart/qs-add/)
 
 ## Setup Project
 
@@ -69,14 +73,19 @@ Follow the steps below to start the demo locally with Docker:
     cd hasura
     ```
 
-3. Apply metadata and load sample data:
+4. Create the `config.yaml` file from the template for local deployments:
+    ```bash
+    cp local.config.yaml config.yaml
+    ```
+
+4. Apply metadata and load sample data:
     ```sh-session
     hasura metadata apply
     hasura migrate apply
     hasura metadata reload
     hasura seeds apply
     ```
-4. Visit the following endpoints:
+5. Visit the following endpoints:
 
 ```sh-session
 Visit http://localhost:3000 for Next.js frontend
@@ -90,7 +99,24 @@ Visit http://localhost:9001 for Yugabyte TServer UI
 
 ### Cloud Deployment
 
-TBD
+1. [Interconnect](https://docs.yugabyte.com/latest/yugabyte-cloud/cloud-examples/hasura-cloud/) your Hasura Cloud and Yugabyte Cloud instances.
+
+2. Navigate to the `hasura` directory:
+    ```bash
+    cd hasura
+    ```
+
+3. Create the `config.yaml` file from the template for cloud deployments:
+    ```bash
+    cp cloud.config.yaml config.yaml
+    ```
+
+4. Open the `config.yaml` file and provide `endpoint` and `admin_secret` settings: 
+
+    The settings can be found on your Hasura Cloud project's dashboard:
+    ![hasura endpoint configuration](Images/example.png)
+
+5. 
 
 ## Application Technical Overview
 This example is a dockerized project with the following services: Postgres, GraphQL Engine, Minio, and Next.js. The project has one external service dependency for payment handling, which we've chosen to implement with Stripe. User authentication and authorization, cart management, order management and product information management is stored in Postgres and architected through Hasura GraphQL Engine. Minio is utilized for asset storage as it implements a common S3 interface.
