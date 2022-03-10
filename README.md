@@ -1,12 +1,15 @@
-# Hasura Super App
+# Hasura and Yugabyte E-Commerce Application
 
-To test this application, see the [Setup](Setup.md) docs.
+The Hasura and Yugabyte e-commerce app is a full featured reference application demonstrating many of the powerful featues of Hasura's GraphQL Engine and Yugabyte distributed database. 
+[Here](https://github.com/hasura/hasura-ecommerce) you can find the original version of the application that uses PostgreSQL as a database and supports only the on-prem deployment option of Hasura.
+
 <!-- vscode-markdown-toc -->
 
 - [Hasura Super App](#hasura-super-app)
-  - [Introduction](#introduction)
-  - [Getting Started](#getting-started)
-  - [2 Minute Video Demo](#2-minute-video-demo)
+  - [Prerequisite](#prerequisite)
+  - [Setup Project](#setup-project)
+  - [Start Application Locally](#start-application-locally)
+  - [Start Application in Cloud](#start-application-in-cloud)
   - [Application Technical Overview](#application-technical-overview)
   - [Application Architectural Overview](#application-architectural-overview)
     - [Authentication Flow](#authentication-flow)
@@ -15,6 +18,7 @@ To test this application, see the [Setup](Setup.md) docs.
     - [GraphQL SDK](#graphql-sdk)
     - [Hasura Migration Flow](#hasura-migration-flow)
     - [3 Factor Applications](#3-factor-applications)
+  - [Clear Demo Resources](#clear-demo-resources) 
 
 <!-- vscode-markdown-toc-config
     numbering=false
@@ -22,23 +26,12 @@ To test this application, see the [Setup](Setup.md) docs.
     /vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
+## Prerequisite
+1. Docker and Docker Compose installed. [Install instructions.](https://docs.docker.com/get-docker/)
+2. Stripe Secret and Publishable keys. _The account doesn't need to be verified as no transactions will be happening._ [Instructions here.](https://stripe.com/docs/keys)
+3. Hasura CLI installed. [Instructions here.](https://hasura.io/docs/latest/graphql/core/hasura-cli/install-hasura-cli.html)
 
-TODO:
-clean restart:
-https://docs.tibco.com/pub/mash-local/4.1.0/doc/html/docker/GUID-BD850566-5B79-4915-987E-430FC38DAAE4.html
-
-
-
-> **Disclaimer/Notice:** This application was a passion project for a number of engineers and other team members internally. Initial developments began long prior to v2.0 releases and before the Metadata V3 spec. As you might assume given the circumstances, there are some irregularitaries in the codebase, and small parts of the UI/design exist solely for aesthetic purposes/inspiration. Our hope was that the "big picture" product here could be useful for others both as a learning exercise or quick reference for particular featuresets. We wish and intend to continue to build out & integrate features of Hasura so that this repo can serve as a cannonical community reference for whatever your implementation/architecture question is.
-
-## Introduction
-
-The Hasura Super App is a full featured reference application demonstrating many of the powerful featues of Hasura's GraphQL Engine. This is free and open software and you are invited to take and use as much of it as you would like, though it was designed for educational purposes.
-
-
-## Getting Started
-
-Follow the steps below to start the demo locally with Docker.
+## Setup Project
 
 1. Clone the project:
     ```bash
@@ -48,29 +41,36 @@ Follow the steps below to start the demo locally with Docker.
     ```bash
     cp .env.example .env
     ```
-3. Start the demo in Docker:
 
-    Cloud, Hasura Cloud and Yugabyte Cloud:
+## Start Application Locally
+
+Follow the steps below to start the demo locally with Docker:
+
+1. Start the demo using YugabyteDB or PostgreSQL as a database:
+
+    For on-prem *PostgreSQL* deployment:
     ```bash
-    docker-compose -f docker-compose-cloud.yaml up
+    docker-compose -f docker-compose-postgres.yaml up
     ```
 
-    On-prem, YugabyteDB:
+    For on-prem *YugabyteDB* deployment:
     ```bash
     docker-compose -f docker-compose-yugabyte.yaml up
     ```
-
-    On-prem, PostgreSQL:
-    ```bash
-    docker-compose -f docker-compose-postgres.yaml up
-    ``` 
-4. Load sample data:
+ 
+2. Navigate to the `hasura` directory:
     ```bash
     cd hasura
+    ```
+
+3. Apply metadata and load sample data:
+    ```sh-session
+    hasura metadata apply
+    hasura migrate apply
+    hasura metadata reload
     hasura seeds apply
     ```
-5. Visit the following endpoints:
-
+4. Visit the following endpoints:
 
 ```sh-session
 Visit http://localhost:3000 for Next.js frontend
@@ -82,10 +82,9 @@ Visit http://localhost:7001 for Yugabyte Master UI
 Visit http://localhost:9001 for Yugabyte TServer UI
 ```
 
+## Start Application in Cloud
 
-## 2 Minute Video Demo
-
-https://user-images.githubusercontent.com/26604994/125822361-44faf3f2-a8a1-47a3-8ddf-52ccdf801f20.mp4
+TBD
 
 ## Application Technical Overview
 This example is a dockerized project with the following services: Postgres, GraphQL Engine, Minio, and Next.js. The project has one external service dependency for payment handling, which we've chosen to implement with Stripe. User authentication and authorization, cart management, order management and product information management is stored in Postgres and architected through Hasura GraphQL Engine. Minio is utilized for asset storage as it implements a common S3 interface.
@@ -165,39 +164,8 @@ This application follows the 3 Factor App principles which are composed of robus
 
 ## Clear Demo Resources
 
-1. Stop the containers:
-    
-    Cloud, Hasura Cloud and Yugabyte Cloud:
-    ```bash
-    docker-compose -f docker-compose-cloud.yaml down
-    ```
+Use the script below to clear the demo resources such as created containers and volumes:
 
-    On-prem, YugabyteDB:
-    ```bash
-    docker-compose -f docker-compose-yugabyte.yaml down
-    ```
-
-    On-prem, PostgreSQL:
-    ```bash
-    docker-compose -f docker-compose-postgres.yaml down
-    ``` 
-
-2. Delete all containers:
-    ```bash
-    docker rm -f $(docker ps -a -q)
-    ```
-3. Delete all volumes:
-    ```bash
-    docker volume rm $(docker volume ls -q)
-    ```    
-
-Perf (86,550 rows - fat records, a lot of text for product's description):
-
-* Multiple INSERTS => single INSERT statement:
-0.31s user 0.32s system 0% cpu 1:04.34 total
-
-* Next, wrapped in a single transaction:
-0.29s user 0.27s system 1% cpu 42.996 total
-
-* Finally, disabled triggers:
-0.30s user 0.27s system 1% cpu 43.586 total
+```bash
+    ./clear-demo-resources.sh
+```
