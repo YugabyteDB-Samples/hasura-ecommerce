@@ -42,7 +42,11 @@ The Hasura and Yugabyte e-commerce app is a full featured reference application 
     cp .env.example .env
     ```
 
-## Start Application Locally
+## Start Application
+
+You can start the application in your local on-prem environment or in the cloud.
+
+### Local Deployment
 
 Follow the steps below to start the demo locally with Docker:
 
@@ -82,7 +86,7 @@ Visit http://localhost:7001 for Yugabyte Master UI
 Visit http://localhost:9001 for Yugabyte TServer UI
 ```
 
-## Start Application in Cloud
+### Cloud Deployment
 
 TBD
 
