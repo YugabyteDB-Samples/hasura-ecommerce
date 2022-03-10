@@ -73,19 +73,25 @@ Follow the steps below to start the demo locally with Docker:
     cd hasura
     ```
 
-4. Create the `config.yaml` file from the template for local deployments:
+3. Create the `config.yaml` file from the template for local deployments:
     ```bash
     cp local.config.yaml config.yaml
     ```
 
-4. Apply metadata and load sample data:
+4. Create the `databases.yaml` file from the template for local deployments:
+    ```bash
+    cp metadata/databases/local.databases.yaml metadata/databases/databases.yaml
+    ```
+
+5. Apply metadata and load sample data:
     ```sh-session
     hasura metadata apply
     hasura migrate apply
     hasura metadata reload
     hasura seeds apply
     ```
-5. Visit the following endpoints:
+
+6. Visit the following endpoints:
 
 ```sh-session
 Visit http://localhost:3000 for Next.js frontend
@@ -117,7 +123,23 @@ Visit http://localhost:9001 for Yugabyte TServer UI
 
     ![hasura endpoint configuration](images/hasura_endpoint.png)
 
-5. 
+5. Create the `metadata/databases/databases.yaml` file from the template for cloud deployments:
+    ```bash
+    cp metadata/databases/cloud.databases.yaml metadata/databases/databases.yaml
+    ```
+
+6. Open the `metadata/databases/databases.yaml` file and update one parameter: 
+    * `database_url` - use the value of the `Connection String` property. Put in quotes in the config file.
+
+    ![hasura endpoint configuration](images/yugabyte_cloud_connection_string.png)
+
+7. Apply metadata and load sample data:
+    ```sh-session
+    hasura metadata apply
+    hasura migrate apply
+    hasura metadata reload
+    hasura seeds apply
+    ```
 
 ## Application Technical Overview
 This example is a dockerized project with the following services: Postgres, GraphQL Engine, Minio, and Next.js. The project has one external service dependency for payment handling, which we've chosen to implement with Stripe. User authentication and authorization, cart management, order management and product information management is stored in Postgres and architected through Hasura GraphQL Engine. Minio is utilized for asset storage as it implements a common S3 interface.

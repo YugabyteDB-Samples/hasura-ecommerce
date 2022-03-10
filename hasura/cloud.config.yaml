@@ -1,0 +1,7 @@
+version: 3
+endpoint: # "GraphQL API" setting of your Hasura Cloud project
+admin_secret: # "Admin Secret" setting of your Hasura Cloud project
+metadata_directory: metadata
+actions:
+  kind: synchronous
+  handler_webhook_baseurl: http://localhost:3000
