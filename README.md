@@ -39,7 +39,7 @@ The Hasura and Yugabyte e-commerce app is a full featured reference application 
 
 ## Setup Project
 
-Clone the project:
+1. Clone the project:
     ```bash
     git clone https://github.com/dmagda/hasura-ecommerce
     ```
