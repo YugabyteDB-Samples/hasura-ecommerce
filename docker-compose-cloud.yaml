@@ -15,9 +15,10 @@ services:
     ports:
       - 3000:3000
     environment:
-      NEXT_PUBLIC_HASURA_URL_SERVERSIDE: https://native-ladybug-39.hasura.app/
-      NEXT_PUBLIC_HASURA_URL_CLIENTSIDE: https://native-ladybug-39.hasura.app/
-      HASURA_ADMIN_SECRET: Ee7ZjxrImmGIuu60sv8ieDbf6iYFAKKtAVV2WTjFfeKGXawUVVjTb1hfXgE2Egfg
+      NEXT_PUBLIC_HASURA_URL_SERVERSIDE: ${HASURA_CLOUD_URL}
+      HASURA_ADMIN_SECRET: ${HASURA_CLOUD_ADMIN_SECRET}
+      NEXT_PUBLIC_HASURA_URL_CLIENTSIDE: ${HASURA_CLOUD_URL}
+      NEXT_PUBLIC_HASURA_CLOUD_ADMIN_SECRET: ${HASURA_CLOUD_ADMIN_SECRET}
       HASURA_JWT_SECRET_TYPE: HS256
       HASURA_JWT_SECRET_KEY: this-is-a-generic-HS256-secret-key-and-you-should-really-change-it
       S3_SERVER_URL: http://minio:9000

@@ -34,6 +34,11 @@ export const isBrowser = () => !isServer();
 
 function getHeaders() {
   const headers = {} as HeadersInit;
+
+  // Required for the Hasura Cloud deployments. Otherwise, the browser's requests will be rejected
+  if (process.env.NEXT_PUBLIC_HASURA_CLOUD_ADMIN_SECRET !== "undefined")
+    headers["X-Hasura-Admin-Secret"]=process.env.NEXT_PUBLIC_HASURA_CLOUD_ADMIN_SECRET; 
+
   const token = getAccessToken();
   if (token) headers["Authorization"] = `Bearer ${token}`;
   return headers;
