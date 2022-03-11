@@ -163,6 +163,11 @@ Visit http://localhost:9001 for Yugabyte TServer UI
     docker-compose -f docker-compose-cloud.yaml up
     ```
 
+5. Open the application in your browser:
+    ```bash
+    http://localhost:3000 for Next.js frontend
+    ```
+
 ## Application Technical Overview
 This example is a dockerized project with the following services: Postgres, GraphQL Engine, Minio, and Next.js. The project has one external service dependency for payment handling, which we've chosen to implement with Stripe. User authentication and authorization, cart management, order management and product information management is stored in Postgres and architected through Hasura GraphQL Engine. Minio is utilized for asset storage as it implements a common S3 interface.
 
