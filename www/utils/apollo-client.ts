@@ -80,7 +80,7 @@ function getApolloLink() {
 
       return isExpired == false;
     },
-    fetchAccessToken: () => {
+    fetchAccessToken: () => {        
       return client.query({
         refreshToken: [
           {

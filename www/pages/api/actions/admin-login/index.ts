@@ -44,7 +44,8 @@ handler.post(async (req, res) => {
     token,
     name: user.name,
     email: user.email,
-    refreshToken: user.refresh_token,
+    // quick workaround: the client side doesn't expect null refresh_tokens
+    refreshToken: user.refresh_token === null ? '' : user.refresh_token,
   });
 });
 
