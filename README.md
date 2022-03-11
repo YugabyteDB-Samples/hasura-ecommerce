@@ -165,7 +165,7 @@ Visit http://localhost:9001 for Yugabyte TServer UI
 
 5. Open the application in your browser:
     ```bash
-    http://localhost:3000 for Next.js frontend
+    http://localhost:3000
     ```
 
 ## Application Technical Overview
