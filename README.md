@@ -106,7 +106,7 @@ Visit http://localhost:9001 for Yugabyte TServer UI
 
 ### Cloud Deployment
 
-#### Provision Hasura and Yugabyte Cloud
+#### Prepare Hasura and Yugabyte Cloud
 
 1. [Interconnect](https://docs.yugabyte.com/latest/yugabyte-cloud/cloud-examples/hasura-cloud/) your Hasura Cloud and Yugabyte Cloud instances.
 
@@ -157,6 +157,11 @@ Visit http://localhost:9001 for Yugabyte TServer UI
     * `HASURA_CLOUD_URL` - your Hasura Cloud GraphQL API URL (without `/v1/graphql` in the end)
     * `HASURA_CLOUD_ADMIN_SECRET` - your Hasura Cloud admin secret.
     * `STRIPE_*` - stripe related parameters if you want checkout to work.
+
+4. Start the application locally with Docker:
+    ```bash
+    docker-compose -f docker-compose-cloud.yaml up
+    ```
 
 ## Application Technical Overview
 This example is a dockerized project with the following services: Postgres, GraphQL Engine, Minio, and Next.js. The project has one external service dependency for payment handling, which we've chosen to implement with Stripe. User authentication and authorization, cart management, order management and product information management is stored in Postgres and architected through Hasura GraphQL Engine. Minio is utilized for asset storage as it implements a common S3 interface.
