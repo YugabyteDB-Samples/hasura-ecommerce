@@ -27,6 +27,7 @@ handler.post(async (req, res) => {
   });
 
   const user = data.site_admin[0];
+
   if (!user) return res.status(401).json({ message: "Invalid" });
 
   const validPassword = await bcrypt.compare(password, user.password);
