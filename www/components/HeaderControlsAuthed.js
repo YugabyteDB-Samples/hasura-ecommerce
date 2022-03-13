@@ -2,7 +2,7 @@ import * as React from "react";
 import { useAtom } from "jotai";
 import { accountReducerAtom, actions } from "../state/AccountState";
 import useOnClickOutside from "../hooks/useOnClickOutside";
-import { ChevronDownOutline } from "react-ionicons";
+import { ChevronDownOutline, PersonOutline, ReceiptOutline, LogOutOutline } from "react-ionicons";
 
 const HeaderControlsAuthed = ({ name }) => {
   const [account, dispatch] = useAtom(accountReducerAtom);
@@ -18,20 +18,20 @@ const HeaderControlsAuthed = ({ name }) => {
         className="hidden-tablet header-nav mr-xs"
         onClick={() => setMenuOpen((v) => !v)}
       >
-        <ion-icon class="mr-xxs" name="person-outline"></ion-icon> {name}{" "}
+        <PersonOutline color="white" className="mr-xs"/> {name}{" "}
         <ChevronDownOutline color="white"/>
       </button>
       <div className={`menu left ${menuOpen ? "active" : ""}`}>
         <ul ref={menu}>
           <li className="link">
             <a href="/account">
-              <ion-icon class="mr-xxs" name="person-outline"></ion-icon> My
+              <PersonOutline color="white" className="mr-xxs"/> My
               Account
             </a>
           </li>
           <li className="link">
             <a href="#!">
-              <ion-icon class="mr-xxs" name="receipt-outline"></ion-icon> Orders
+             <ReceiptOutline color="white" className="mr-xxs"/> Orders
             </a>
           </li>
           <li className="link">
@@ -42,7 +42,7 @@ const HeaderControlsAuthed = ({ name }) => {
               }}
             >
               <span className="hidden-tablet header-nav mr-xs">
-                <ion-icon class="mr-xxs" name="log-out-outline"></ion-icon>{" "}
+                <LogOutOutline color="white" className="mr-xxs"/>{" "}
                 Logout
               </span>
             </button>

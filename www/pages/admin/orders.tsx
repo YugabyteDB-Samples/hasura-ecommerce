@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import LayoutAdmin from "../../components/LayoutAdmin";
 import { useTypedQuery } from "../../utils/gql-zeus-query-hooks";
+import { ArrowForwardOutline, ArrowBackOutline, Menu } from "react-ionicons";
 
 const AdminOrders = ({ orders = [] }) => {
   const [customerName, setCustomerName] = React.useState("");
@@ -165,7 +166,7 @@ const AdminOrders = ({ orders = [] }) => {
         <div className="container">
           <div className="flex-middle mb-md">
             <button id="menu-filters" className="blank mr-xs hidden-desktop">
-              <ion-icon name="menu" />
+              <Menu/>
             </button>
             <h2>Orders</h2>
           </div>
@@ -218,7 +219,7 @@ const AdminOrders = ({ orders = [] }) => {
                         >
                           <a>
                             View Products{" "}
-                            <ion-icon name="arrow-forward-outline" />
+                            <ArrowForwardOutline/>
                           </a>
                         </Link>
                       </td>
@@ -230,12 +231,12 @@ const AdminOrders = ({ orders = [] }) => {
           </div>
           <div className="center mb-md">
             <button>
-              <ion-icon name="arrow-back-outline" /> Previous
+              <ArrowBackOutline/> Previous
             </button>{" "}
             <button>1</button> <button className="blank disabled">2</button>{" "}
             <button>3</button> ... <button>299</button>{" "}
             <button>
-              Next <ion-icon name="arrow-forward-outline" />
+              Next <ArrowForwardOutline/>
             </button>
           </div>
         </div>

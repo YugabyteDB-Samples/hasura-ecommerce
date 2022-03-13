@@ -19,6 +19,8 @@ import {
 } from "../../utils/generated/graphql-client-sdk";
 import { $, useTypedMutation } from "../../utils/gql-zeus-query-hooks";
 
+import {ArrowBackOutline, CartOutline, StarOutline} from "react-ionicons";
+
 interface ReviewModalProps {
   visible: boolean;
   submitReviewHandler: (Event) => Promise<any> | ((Event) => any);
@@ -97,7 +99,7 @@ function ReviewModal(props: ReviewModalProps) {
                   className="default w-100"
                   onClick={props.toggleModalHandler}
                 >
-                  <ion-icon name="arrow-back-outline" />
+                  <ArrowBackOutline/>
                   Back to Product
                 </button>
               </form>
@@ -198,7 +200,8 @@ export default function Product(props) {
                 </a>
                 <div className="mb-sm">
                   <Rating rating={props.reviewSummary.averageRating} />
-                  <ion-icon class="muted" name="star-outline" />{" "}
+                  <StarOutline cssClasses="muted"/>{" "}
+
                   <span className="muted">
                     {props.reviewSummary.totalRatings}
                   </span>
@@ -265,7 +268,7 @@ export default function Product(props) {
                       ]);
                     }}
                   >
-                    <ion-icon name="cart-outline" />
+                    <CartOutline/>
                     Add to Cart
                   </button>
                 </div>

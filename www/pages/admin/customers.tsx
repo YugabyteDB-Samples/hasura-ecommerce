@@ -3,6 +3,7 @@ import Head from "next/head";
 import LayoutAdmin from "../../components/LayoutAdmin";
 import { useTypedQuery } from "../../utils/gql-zeus-query-hooks";
 import { order_by, user } from "../../utils/generated/graphql-client-sdk";
+import {ArrowForwardOutline, ArrowBackOutline, Menu} from "react-ionicons";
 
 function CustomerRow({ customer }: { customer: user }) {
   return (
@@ -23,7 +24,7 @@ function CustomerRow({ customer }: { customer: user }) {
       </td>
       <td>
         <a href="#!">
-          View Orders <ion-icon name="arrow-forward-outline" />
+          View Orders <ArrowForwardOutline/>
         </a>
       </td>
     </tr>
@@ -136,7 +137,7 @@ const AdminCustomers = () => {
         <div className="container">
           <div className="flex-middle mb-md">
             <button id="menu-filters" className="blank mr-xs hidden-desktop">
-              <ion-icon name="menu" />
+              <Menu/>
             </button>
             <h2>Customers</h2>
           </div>
@@ -166,12 +167,12 @@ const AdminCustomers = () => {
           </div>
           <div className="center mb-md">
             <button>
-              <ion-icon name="arrow-back-outline" /> Previous
+              <ArrowBackOutline/> Previous
             </button>{" "}
             <button>1</button> <button className="blank disabled">2</button>{" "}
             <button>3</button> ... <button>299</button>{" "}
             <button>
-              Next <ion-icon name="arrow-forward-outline" />
+              Next <ArrowForwardOutline/>
             </button>
           </div>
         </div>

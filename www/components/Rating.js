@@ -1,3 +1,4 @@
+import { Star, StarOutline } from "react-ionicons";
 const Rating = ({ rating }) => {
   const total = rating;
   const stars = [];
@@ -6,8 +7,8 @@ const Rating = ({ rating }) => {
     const isLast = i === 5;
     const color = included ? "orange" : "muted";
     const margin = isLast ? "mr-xs" : "";
-    const icon = included ? "star" : "star-outline";
-    const star = <ion-icon class={`${color} ${margin}`} name={icon} key={i} />;
+    const star = included? <Star class={`${color} ${margin}`} key={i} /> :
+        <StarOutline class={`${color} ${margin}`} key={i} />;
     stars.push(star);
   }
   return <>{stars}</>;

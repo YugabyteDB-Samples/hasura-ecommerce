@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useAtom } from "jotai";
 
 import { menuIsOpen } from "../state/MenuState";
-import { ArrowForwardOutline, Menu } from "react-ionicons";
+import { ArrowForwardOutline, Menu, Search } from "react-ionicons";
 
 import {
   categories,
@@ -56,7 +56,7 @@ const Header = () => {
               onChange={(e) => setSearchValue(e.target.value)}
             />
             <button className="primary">
-              <ion-icon className="dark" name="search" />
+              <Search className="dark"/>
             </button>
           </div>
           <div

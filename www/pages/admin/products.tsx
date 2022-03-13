@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import LayoutAdmin from "../../components/LayoutAdmin";
 import { useTypedQuery } from "../../utils/gql-zeus-query-hooks";
+import { ArrowForwardOutline, ArrowBackOutline, AddCircleOutline, Menu } from "react-ionicons";
 
 const AdminProducts = (props) => {
   const router = useRouter();
@@ -147,11 +148,11 @@ const AdminProducts = (props) => {
         <div className="container">
           <div className="flex-middle mb-md">
             <button id="menu-filters" className="blank mr-xs hidden-desktop">
-              <ion-icon name="menu" />
+              <Menu/>
             </button>
             <h2>Products</h2>
             <a href="/admin/add-product" className="primary flex-pull-right">
-              <ion-icon name="add-circle-outline" /> Add Product
+              <AddCircleOutline/> Add Product
             </a>
           </div>
           <div className="shadow card overflow-x mb-md">
@@ -202,7 +203,7 @@ const AdminProducts = (props) => {
                             >
                               <a>
                                 View Orders{" "}
-                                <ion-icon name="arrow-forward-outline" />
+                                <ArrowForwardOutline/>
                               </a>
                             </Link>
                           )}
@@ -215,12 +216,12 @@ const AdminProducts = (props) => {
           </div>
           <div className="center mb-md">
             <button>
-              <ion-icon name="arrow-back-outline" /> Previous
+              <ArrowBackOutline/> Previous
             </button>{" "}
             <button>1</button> <button className="blank disabled">2</button>{" "}
             <button>3</button> ... <button>299</button>{" "}
             <button>
-              Next <ion-icon name="arrow-forward-outline" />
+              Next <ArrowForwardOutline/>
             </button>
           </div>
         </div>
