@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useAtom } from "jotai";
 
 import { menuIsOpen } from "../state/MenuState";
+import { ArrowForwardOutline, Menu } from "react-ionicons";
 
 import {
   categories,
@@ -80,7 +81,7 @@ const Header = () => {
             <a href="#!">
               <div className="list-result center pad-xs dark">
                 <strong>
-                  View 22 More Results <ion-icon name="arrow-forward-outline" />
+                  View 22 More Results <ArrowForwardOutline/>
                 </strong>
               </div>
             </a>
@@ -100,7 +101,7 @@ const Header = () => {
           onClick={() => setMenuOpen((status) => !status)}
         >
           <span id="menu-filters" className="hidden-desktop sub-nav strong sm">
-            <ion-icon name="menu" /> Menu
+            <Menu/> Menu
           </span>
         </button>
         {categoriesState.length &&

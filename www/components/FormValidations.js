@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Checkmark, Close } from "react-ionicons";
 
 const FormValidations = ({ input, onValid }) => {
   const [validPassword, setValidPassword] = React.useState(false);
@@ -51,8 +52,8 @@ const FormValidations = ({ input, onValid }) => {
           const { label, passes } = validation;
           return (
             <p key={index}>
-              {passes && <ion-icon class="green" name="checkmark" />}
-              {!passes && <ion-icon class="red" name="close" />}
+              {passes && <Checkmark color="green"/>}
+              {!passes && <Close color="red" />}
               {label}
             </p>
           );

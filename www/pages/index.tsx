@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <Head>
-        <title>Create Next App</title>
+        <title>E-Commerce App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="content header sidebar pad-xl">

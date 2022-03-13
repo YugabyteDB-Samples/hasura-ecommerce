@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useTypedSubscription } from "../utils/gql-zeus-query-hooks";
+import {ArrowForwardOutline} from "react-ionicons";
 
 const NewCustomers = () => {
   const { data, error, loading } = useTypedSubscription({
@@ -52,7 +53,7 @@ const NewCustomers = () => {
       <div className="flex-middle mb-sm">
         <h2>Recent Customers</h2>
         <button className="flex-pull-right default">
-          View Customers <ion-icon name="arrow-forward-outline" />
+          View Customers <ArrowForwardOutline/>
         </button>
       </div>
       <div className="shadow card mb-lg">
@@ -78,17 +79,16 @@ const NewCustomers = () => {
             <tbody>
               {data.user.map((user, index) => {
                 const { orders, addresses, id, name, email, created_at } = user;
-                const address = addresses.length ? addresses[0] : {};
-                const {
-                  city = "--",
-                  state = "--",
-                  address_line_one = "",
-                  address_line_two = "--",
-                  zipcode = "--",
-                } = address;
+                const address = addresses.length ? addresses[0] : 
+                    {city: "--", state: "--", address_line_one: "",
+                    address_line_two: "--",
+                    zipcode: "--"};
 
-                const order = orders.length ? orders[0] : {};
-                const { created_at: created_at_order = "--" } = order;
+                const {city, state, address_line_one,
+                  address_line_two, zipcode,} = address;
+
+                const order = orders.length ? orders[0] : {created_at: {created_at_order: "--"}};
+                const { created_at: created_at_order} = order;
 
                 const joined = new Date(created_at);
                 const joinedFormatted = joined.toLocaleDateString();
@@ -110,7 +110,7 @@ const NewCustomers = () => {
                     <td>{lastPurchaseformatted}</td>
                     <td>
                       <a href="#!">
-                        View Orders <ion-icon name="arrow-forward-outline" />
+                        View Orders <ArrowForwardOutline/>
                       </a>
                     </td>
                   </tr>

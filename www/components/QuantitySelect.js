@@ -2,6 +2,7 @@ import * as React from "react";
 import styles from "../styles/quantity-select.module.css";
 
 import useOnClickOutside from "../hooks/useOnClickOutside";
+import { ChevronDownOutline } from "react-ionicons";
 
 const Quantity = ({
   children = [1, 2, 3, 4],
@@ -33,7 +34,7 @@ const Quantity = ({
         onClick={() => setMenuOpen((state) => !state)}
       >
         {label} {selected}
-        <ion-icon name="chevron-down-outline" />
+        <ChevronDownOutline/>
       </div>
       {menuOpen && (
         <dl ref={list} className={styles.select}>

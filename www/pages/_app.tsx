@@ -28,14 +28,6 @@ function MyApp({ Component, pageProps }) {
               href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
               rel="stylesheet"
             />
-            <script
-              type="module"
-              src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"
-            />
-            <script
-              noModule={false}
-              src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"
-            />
           </Head>
           <Layout>
             <Component {...pageProps} />

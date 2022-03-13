@@ -4,6 +4,7 @@ import { accountReducerAtom, actions } from "../state/AccountState";
 import { cartIsOpen } from "../state/CartState";
 import HeaderControlsAuthed from "./HeaderControlsAuthed";
 import HeaderControlsUnAuthed from "./HeaderControlsUnAuthed";
+import { CartOutline } from "react-ionicons";
 
 const HeaderControls = () => {
   const [account, dispatch] = useAtom(accountReducerAtom);
@@ -25,7 +26,7 @@ const HeaderControls = () => {
         onClick={() => setCartOpen((status) => !status)}
       >
         <span className="header-nav">
-          <ion-icon name="cart-outline" /> Cart
+          <CartOutline color="white"/> Cart
         </span>
       </button>
     </div>

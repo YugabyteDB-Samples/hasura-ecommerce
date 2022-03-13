@@ -6,6 +6,7 @@ import { client } from "../utils/generated/client";
 
 import { order_status_enum } from "../utils/generated/graphql-client-sdk";
 import { useTypedMutation } from "../utils/gql-zeus-query-hooks";
+import { CartOutline } from "react-ionicons";
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -178,7 +179,7 @@ export function CheckoutForm({ cart, callback, orderInfo }) {
         disabled={!stripe}
         style={{ marginTop: 20 }}
       >
-        <ion-icon name="cart-outline" />
+        <CartOutline/>
         Pay & Checkout
       </button>
     </form>

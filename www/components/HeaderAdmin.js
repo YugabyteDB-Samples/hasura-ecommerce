@@ -1,6 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { MenuOutline, StorefrontOutline } from "react-ionicons";
 
 const HeaderAdmin = () => {
   const router = useRouter();
@@ -36,7 +37,7 @@ const HeaderAdmin = () => {
         </div>
         <a id="menu-btn" href="#!">
           <span className="hidden-desktop header-nav mr-xs">
-            <ion-icon name="menu-outline" /> Menu
+            <MenuOutline/> Menu
           </span>
         </a>
         {nav.map((n, i) => {
@@ -57,7 +58,7 @@ const HeaderAdmin = () => {
         })}
         <a className="flex-pull-right" href="/">
           <span className="header-nav">
-            <ion-icon name="storefront-outline" /> Back to Store
+            <StorefrontOutline/> Back to Store
           </span>
         </a>
       </header>

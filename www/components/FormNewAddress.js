@@ -1,4 +1,6 @@
 import * as React from "react";
+import { AddCircleOutline } from "react-ionicons";
+
 import {
   useTypedMutation,
   $,
@@ -76,7 +78,7 @@ const FormNewAddress = ({ refresh }) => {
             className="default sm mb-xs"
             onClick={() => setAddressIntent("add")}
           >
-            <ion-icon name="add-circle-outline" /> Add New Address
+            <AddCircleOutline/> Add New Address
           </button>
         </div>
       )}

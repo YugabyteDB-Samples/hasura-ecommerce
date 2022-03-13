@@ -2,6 +2,7 @@ import * as React from "react";
 import { useAtom } from "jotai";
 
 import { selectedBrands, selectedCategory } from "../state/FilterState";
+import { Search, ChevronUp, ChevronDown } from "react-ionicons";
 
 import {
   brands,
@@ -58,7 +59,7 @@ const FilterBrands = () => {
       <label className="mb-xxs">Brand</label>
       <div className="input-start blank mb-xs w-100">
         <span>
-          <ion-icon name="search" />
+          <Search/>
         </span>
         <input
           placeholder="Brand..."
@@ -87,14 +88,14 @@ const FilterBrands = () => {
       {sliced && paginate && (
         <button className="btn-reset mb-sm" onClick={() => setSliced(false)}>
           <p className="mb-sm sm">
-            More Brands <ion-icon name="chevron-down" />
+            More Brands <ChevronDown/>
           </p>
         </button>
       )}
       {paginate && !sliced && (
         <button className="btn-reset mb-sm" onClick={() => setSliced(true)}>
           <p className="mb-sm sm">
-            Less Brands <ion-icon name="chevron-up" />
+            Less Brands <ChevronUp/>
           </p>
         </button>
       )}

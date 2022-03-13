@@ -2,6 +2,7 @@ import * as React from "react";
 import { useAtom } from "jotai";
 import { accountReducerAtom, actions } from "../state/AccountState";
 import useOnClickOutside from "../hooks/useOnClickOutside";
+import { ChevronDownOutline } from "react-ionicons";
 
 const HeaderControlsAuthed = ({ name }) => {
   const [account, dispatch] = useAtom(accountReducerAtom);
@@ -18,7 +19,7 @@ const HeaderControlsAuthed = ({ name }) => {
         onClick={() => setMenuOpen((v) => !v)}
       >
         <ion-icon class="mr-xxs" name="person-outline"></ion-icon> {name}{" "}
-        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ChevronDownOutline color="white"/>
       </button>
       <div className={`menu left ${menuOpen ? "active" : ""}`}>
         <ul ref={menu}>

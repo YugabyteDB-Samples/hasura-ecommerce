@@ -1,6 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { useTypedSubscription } from "../utils/gql-zeus-query-hooks";
+import { ArrowForwardOutline } from "react-ionicons";
 
 const NewOrders = () => {
   const { data, error, loading } = useTypedSubscription({
@@ -46,7 +47,7 @@ const NewOrders = () => {
       <div className="flex-middle mb-sm">
         <h2>Recent Orders</h2>
         <button className="flex-pull-right default">
-          View Orders <ion-icon name="arrow-forward-outline" />
+          View Orders <ArrowForwardOutline/>
         </button>
       </div>
       <div className="shadow card mb-lg">
@@ -101,7 +102,7 @@ const NewOrders = () => {
                       >
                         <a>
                           View Products{" "}
-                          <ion-icon name="arrow-forward-outline" />
+                          <ArrowForwardOutline/>
                         </a>
                       </Link>
                     </td>

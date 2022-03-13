@@ -3,8 +3,8 @@ import { useAtom } from "jotai";
 import Link from "next/link";
 
 import QuantitySelect from "./QuantitySelect";
-
 import { cartIsOpen, cart } from "../state/CartState";
+import { CloseCircleOutline } from "react-ionicons";
 
 const Cart = () => {
   const [cartOpen, setCartOpen] = useAtom(cartIsOpen);
@@ -53,7 +53,7 @@ const Cart = () => {
                   }
                 >
                   <span className="sm muted">
-                    <ion-icon name="close-circle-outline" /> Remove
+                    <CloseCircleOutline/> Remove
                   </span>
                 </button>
               </div>

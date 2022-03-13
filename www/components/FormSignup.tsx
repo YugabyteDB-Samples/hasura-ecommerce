@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useAtom, atom } from "jotai";
 import FormValidations from "./FormValidations";
+import { ArrowForwardOutline } from "react-ionicons";
 
 const user = atom({
   name: "",
@@ -112,7 +113,7 @@ const FormSignup = ({ handleSubmit }) => {
                 Sign Up
               </button>
               <button className="default w-100">
-                Go to Login <ion-icon name="arrow-forward-outline" />
+                Go to Login <ArrowForwardOutline/>
               </button>
             </form>
           </div>

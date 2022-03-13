@@ -5,6 +5,7 @@ import * as React from "react";
 import { searchState } from "../state/FilterState";
 import { useTypedQuery } from "../utils/gql-zeus-query-hooks";
 import Offer from "./Offer";
+import { ArrowForwardOutline, ArrowBackOutline } from "react-ionicons";
 
 const AllOffers = () => {
   const [search] = useAtom(searchState);
@@ -55,7 +56,7 @@ const AllOffers = () => {
   const PageNavigationButtons = () => {
     const staticPreviousPage = (
       <button onClick={() => goToPage(page - 1)}>
-        <ion-icon name="arrow-back-outline" />
+        <ArrowBackOutline/>
         Previous{" "}
       </button>
     );
@@ -72,7 +73,7 @@ const AllOffers = () => {
 
     const staticNextPage = (
       <button onClick={() => goToPage(page + 1)}>
-        Next <ion-icon name="arrow-forward-outline" />
+        Next <ArrowForwardOutline/>
       </button>
     );
 
