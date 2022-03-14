@@ -33,7 +33,8 @@ Follow the steps below to run the apllication in the cloud using Hasura Cloud, Y
     ```
 
 4. Open the `config.yaml` file and initialize two parameters: 
-    * `endpoint` - use the value of the `GraphQL API` property of your Hasura Cloud project (without `/v1/graphql` in the end)
+    * `endpoint` - use the value of the `GraphQL API` property of your Hasura Cloud project (without `/v1/graphql` in the end).
+    * `handler_webhook_base_url` - same as above.
     * `admin_secret` - use the value of the `Admin Secret` property.
 
     ![hasura endpoint configuration](images/hasura_endpoint.png)
