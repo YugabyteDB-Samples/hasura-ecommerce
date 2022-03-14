@@ -9,6 +9,7 @@ Follow the steps below to run the apllication in the cloud using Hasura Cloud, Y
   - [Deploy Next.js App in Cloud](#deploy-nextjs-app-in-cloud)
     - [Deploy to Vercel](#deploy-to-vercel)
     - [Update Hasura Cloud Metadata](#update-hasura-cloud-metadata)
+    - [Enable Checkout With Stripe](#enable-checkout-with-stripe)
   - [Deploy Next.js App Locally](#deploy-nextjs-app-locally)      
 
 <!-- vscode-markdown-toc-config
