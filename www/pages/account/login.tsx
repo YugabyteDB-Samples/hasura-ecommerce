@@ -45,11 +45,10 @@ export default function Login({ isAuthed }) {
             refreshToken: true,
           },
         ],
-        errors: [],
       });
 
-      if (response.errors) {
-        console.log(response.errors);
+      if (response['errors']) {
+        console.log(response['errors']);
       } else {
         dispatch({ type: LOGGED_IN, value: response.login });
       }
