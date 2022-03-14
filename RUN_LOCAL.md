@@ -1,3 +1,5 @@
+# Local Deployment
+
 Follow the steps below to run the apllication locally with Docker using PostgreSQL and YugabyteDB as a database:
 
 1. (Optional) Modify the `.env.local.example` with your real Stripe test keys if you want checkout to work and then execute this command:

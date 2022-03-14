@@ -5,7 +5,7 @@ The Hasura and Yugabyte e-commerce app is a full featured reference application 
 
 <!-- vscode-markdown-toc -->
 
-- [Hasura Super App](#hasura-super-app)
+- [Hasura and Yugabyte E-Commerce Application](#hasura-and-yugabyte-e-commerce-application)
   - [Prerequisite](#prerequisite)
   - [Setup Project](#setup-project)
   - [Run Application Locally](#run-application-locally)

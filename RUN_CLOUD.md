@@ -1,6 +1,23 @@
+# Cloud Deployment
+
 Follow the steps below to run the apllication in the cloud using Hasura Cloud, Yugabyte Cloud and Vercel.
 
-## Prepare Hasura and Yugabyte Cloud
+<!-- vscode-markdown-toc -->
+
+- [Cloud Deployment](#cloud-deployment)
+  - [Configure Hasura Cloud and Yugabyte Cloud](#configure-hasura-cloud-and-yugabyte-cloud)
+  - [Deploy Next.js App in Cloud](#deploy-nextjs-app-in-cloud)
+    - [Deploy to Vercel](#deploy-to-vercel)
+    - [Update Hasura Cloud Metadata](#update-hasura-cloud-metadata)
+  - [Deploy Next.js App Locally](#deploy-nextjs-app-locally)      
+
+<!-- vscode-markdown-toc-config
+    numbering=false
+    autoSave=true
+    /vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+## Configure Hasura Cloud and Yugabyte Cloud
 
 1. [Interconnect](https://docs.yugabyte.com/latest/yugabyte-cloud/cloud-examples/hasura-cloud/) your Hasura Cloud and Yugabyte Cloud instances.
 
@@ -38,7 +55,54 @@ Follow the steps below to run the apllication in the cloud using Hasura Cloud, Y
     hasura seeds apply
     ```
 
-## Start Next.js Application
+## Deploy Next.js App in Cloud
+
+Follow these steps to deploy the app to Vercel and connect it to the Hasura Cloud service and your Stripe account (if you need checkout to work).
+
+### Deploy to Vercel
+
+1. Log in to your [Vercel](https://vercel.com) account.
+
+2. Create a new Vercel project by importing [the project's Git repository](https://github.com/dmagda/hasura-ecommerce)
+
+    ![vercel create project](images/vercel_import_git_repository.png)
+
+3. Configure the project:
+
+    ![vercel project settings](images/vercel_project_settings.png)
+    
+    * **Framework Preset** - select `Next.js`
+    * **Root Directory** - set to `www`
+    * **Environment Variables**:
+        * `NEXT_PUBLIC_HASURA_URL_SERVERSIDE` - the value of the `GraphQL API` property of your Hasura Cloud project (without `/v1/graphql` in the end).
+        * `NEXT_PUBLIC_HASURA_URL_CLIENTSIDE` - same as above.
+        * `HASURA_ADMIN_SECRET` - the `Admin Secret` property from your Hasura Cloud project.
+        * `NEXT_PUBLIC_HASURA_CLOUD_ADMIN_SECRET` - same as above.
+        * `HASURA_JWT_SECRET_TYPE` - set to `HS256`.
+        * `HASURA_JWT_SECRET_KEY` - set to `this-is-a-generic-HS256-secret-key-and-you-should-really-change-it` (or your custom key if you changed the default value).
+
+4. Deploy the Project.
+
+5. Open the app, once the project is deployed!
+
+    ![vercel app ready](images/vercel_app_ready.png)
+
+
+### Update Hasura Cloud Metadata
+
+Your Hasura Cloud instance needs to know the address of the Vercel application to call several API endpoints. The APIs are implmented under the `www\pages\api` directory.
+
+1. Open [Hasura Cloud](https://cloud.hasura.io) project's settings.
+
+2. Add a new environment variable `NEXTJS_SERVER_URL` that refers to the address of your Vercel application instance (for instance, `https://hasura-ecommerce.vercel.app`)
+
+    ![hasura nextjs app address](images/hasura_nextjs_app.png)
+
+3. Wait while Hasura updates the metadata. You should NOT have any metadata conflicts after this step is over.
+
+## Deploy Next.js App Locally
+
+Note, you don't need to follow the steps below if you deployed the app to Vercel. These instructions are for running the app locally.
 
 1. Go to the root directory of the project.
 
@@ -57,7 +121,13 @@ Follow the steps below to run the apllication in the cloud using Hasura Cloud, Y
     docker-compose -f docker-compose-cloud.yaml up
     ```
 
-5. Open the application in your browser:
-    ```bash
-    http://localhost:3000
+5. Visit the following endpoints:
+    ```sh-session
+    Visit http://localhost:3000 for Next.js frontend
+    Login at /account/login has default credentials "user@site.com:password"
+    Login at /admin/account/login has default credentials "admin@site.com:password"
+    Visit http://localhost:8060 for Hasura console (admin secret = "my-secret")
+    Visit http://localhost:9000 for Minio dashboard (login = "minio:minio123")
+    Visit http://localhost:7001 for Yugabyte Master UI
+    Visit http://localhost:9001 for Yugabyte TServer UI
     ```
