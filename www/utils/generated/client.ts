@@ -5,9 +5,15 @@ export const client = Chain(getHasuraURL() + "/v1/graphql", {
   credentials: "include",
   mode: "cors",
   headers: (() =>
-    typeof window === "undefined"
-      ? { "X-Hasura-Admin-Secret": process.env.HASURA_ADMIN_SECRET }
-      : {})(),
+    {
+        if (typeof window === "undefined") {
+            return { "X-Hasura-Admin-Secret": process.env.HASURA_ADMIN_SECRET };
+        } else if (process.env.NEXT_PUBLIC_HASURA_CLOUD_ADMIN_SECRET) {
+            return { "X-Hasura-Admin-Secret": process.env.NEXT_PUBLIC_HASURA_CLOUD_ADMIN_SECRET };
+        } else {
+            return {};
+        }
+    })(),
 });
 
 export const openclient = Chain(getHasuraURL() + "/v1/graphql", {
