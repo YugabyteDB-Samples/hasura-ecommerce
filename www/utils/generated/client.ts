@@ -12,4 +12,8 @@ export const client = Chain(getHasuraURL() + "/v1/graphql", {
 
 export const openclient = Chain(getHasuraURL() + "/v1/graphql", {
   credentials: "include",
+  headers: (() =>
+   process.env.NEXT_PUBLIC_HASURA_CLOUD_ADMIN_SECRET
+    ? { "X-Hasura-Admin-Secret": process.env.NEXT_PUBLIC_HASURA_CLOUD_ADMIN_SECRET }
+    : {})(),
 });
