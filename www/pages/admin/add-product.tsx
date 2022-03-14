@@ -1,4 +1,6 @@
 import * as React from "react";
+import {CSSProperties} from "react";
+
 import Head from "next/head";
 import LayoutAdmin from "../../components/LayoutAdmin";
 
@@ -21,14 +23,14 @@ function DropzoneWithPreview(props) {
     },
   });
 
-  const thumbsContainer = {
+  const thumbsContainer: CSSProperties = {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     marginTop: 16,
   };
 
-  const thumb = {
+  const thumb: CSSProperties = {
     display: "inline-flex",
     borderRadius: 2,
     border: "1px solid #eaeaea",
@@ -40,7 +42,7 @@ function DropzoneWithPreview(props) {
     boxSizing: "border-box",
   };
 
-  const thumbInner = {
+  const thumbInner: CSSProperties = {
     display: "flex",
     minWidth: 0,
     overflow: "hidden",
@@ -52,7 +54,7 @@ function DropzoneWithPreview(props) {
     height: "100%",
   };
 
-  const dropzoneStyles = {
+  const dropzoneStyles: CSSProperties = {
     flex: 1,
     display: "flex",
     flexDirection: "column",

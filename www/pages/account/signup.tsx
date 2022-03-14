@@ -73,7 +73,9 @@ export default function Signup({ isAuthed, isForAdmin = false }) {
       </Head>
       <section className="content header pad-xl">
         {!isAuthed && (
-          <FormSignup handleSubmit={submitForm} loading={account.authing} />
+          <FormSignup handleSubmit={submitForm} 
+        //   loading={account.authing} 
+          />
         )}
         {isAuthed && <p>Good to go, bro</p>}
       </section>

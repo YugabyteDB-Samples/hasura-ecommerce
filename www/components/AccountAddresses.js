@@ -8,7 +8,7 @@ import {
   $,
 } from "../utils/gql-zeus-query-hooks";
 
-const AccountAddresses = ({ id }) => {
+const AccountAddresses = () => {
   const [fetchAddresses, { data, loading, error, refetch }] = useTypedLazyQuery(
     {
       address: [

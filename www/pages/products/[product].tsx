@@ -227,7 +227,7 @@ export default function Product(props) {
                       <td>{id}</td>
                     </tr>
                     <tr>
-                      <td colSpan="2">
+                      <td colSpan={2}>
                         <strong>Description</strong>
                         <br />
                         <br />

@@ -169,9 +169,9 @@ const AdminProducts = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {loading && <tr colSpan={7}>Searching…</tr>}
+                {loading && <tr><td colSpan={7}>Searching…</td></tr>}
                 {!loading && data?.product.length === 0 && (
-                  <tr colSpan={7}>No Results Found…</tr>
+                  <tr><td colSpan={7}>No Results Found…</td></tr>
                 )}
                 {!loading &&
                   data &&

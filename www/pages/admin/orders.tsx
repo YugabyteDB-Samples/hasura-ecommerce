@@ -103,7 +103,7 @@ const AdminOrders = ({ orders = [] }) => {
           className="mb-sm w-100"
           type="string"
           placeholder="ID..."
-          value={orderIDs}
+          value={orderIDs.map(String)}
           onChange={handleIDChange}
         />
         <hr className="mb-xs" />
@@ -184,9 +184,9 @@ const AdminOrders = ({ orders = [] }) => {
                 </tr>
               </thead>
               <tbody>
-                {loading && <tr colSpan={7}>Searching…</tr>}
+                {loading && <tr><td colSpan={7}>Searching…</td></tr>}
                 {data?.order?.length === 0 && (
-                  <tr colSpan={7}>No Results Found…</tr>
+                  <tr><td colSpan={7}>No Results Found…</td></tr>
                 )}
                 {data?.order.map((o, i) => {
                   const { id, created_at, user, products, order_total } = o;

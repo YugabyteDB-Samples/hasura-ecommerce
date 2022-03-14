@@ -45,6 +45,7 @@ export default function Login({ isAuthed }) {
             refreshToken: true,
           },
         ],
+        errors: [],
       });
 
       if (response.errors) {
@@ -65,7 +66,9 @@ export default function Login({ isAuthed }) {
       </Head>
       <section className="content header pad-xl">
         {!isAuthed && (
-          <FormLogin handleSubmit={submitForm} loading={account.authing} />
+          <FormLogin handleSubmit={submitForm} 
+            // loading={account.authing} 
+            />
         )}
         {isAuthed && <p>Good to go, bro</p>}
       </section>
