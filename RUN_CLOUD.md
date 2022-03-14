@@ -100,6 +100,37 @@ Your Hasura Cloud instance needs to know the address of the Vercel application t
 
 3. Wait while Hasura updates the metadata. You should NOT have any metadata conflicts after this step is over.
 
+### Enable Checkout With Stripe
+
+The application can use Stripe for the checkout feature. Follow these steps to connect Stripe to your app running in Vercel:
+
+1. Create a Stripe account.
+
+2. Navigate to the **Developers** dashboard.
+
+    ![stripe developers](images/stripe_developers_dashboard.png)
+
+3. Configure a new **Webhook** asking Stripe to update the Vercel application on the payment status changes:
+
+    ![stripe webhook](images/stripe_webhook.png)
+
+    * **Endpoint URL** - the format is `{your_vercel_app_URL}/api/webhooks/stripe` (for instance, `https://hasura-ecommerce.vercel.app/api/webhooks/stripe`)
+    * **Events to Listen** - select to listen to all the events under the `payment_intent.*` category.
+
+
+4. Go to the **Developers->API keys** screen and find the `Publishable key` and `Secret key` parameters.
+
+    ![stripe settings](images/stripe_settings.png)
+
+5. Open the **Settings->Environment Variable** dashboard of your Vercel application and add these parameters there:
+
+    ![vercel stripe settings](images/vercel_stripe_settings.png)
+
+    * `STRIPE_SECRET_KEY` - your Stripe secret key.
+    * `STRIPE_PUBLISHABLE_KEY` - your Stripe publishable key.
+
+6. Redeploy the Vercel app to apply the changes.
+
 ## Deploy Next.js App Locally
 
 Note, you don't need to follow the steps below if you deployed the app to Vercel. These instructions are for running the app locally.
