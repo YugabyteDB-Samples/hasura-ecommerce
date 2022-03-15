@@ -1,9 +1,11 @@
-# Cloud Deployment
+# Cloud-Native E-Commerce Application
 
-Follow the steps below to run the apllication in the cloud using Hasura Cloud, Yugabyte Cloud and Vercel.
+This e-commerce applications uses the following services - Yugabyte Cloud, Hasura Cloud, and Vercel. The project has one external service dependency for payment handling, which we've chosen to implement with Stripe. User authentication and authorization, cart management, order management and product information management is stored in Yugabyte Cloud and architected through Hasura Cloud GraphQL Engine. Minio is currently not supported for this deployment option.
 
 <!-- vscode-markdown-toc -->
 
+- [Cloud-Native E-Commerce Application](#cloud-native-e-commerce-application)
+- [Application Architectural Overview](#application-architectural-overview)
 - [Cloud Deployment](#cloud-deployment)
   - [Configure Hasura Cloud and Yugabyte Cloud](#configure-hasura-cloud-and-yugabyte-cloud)
   - [Deploy Next.js App in Cloud](#deploy-nextjs-app-in-cloud)
@@ -17,6 +19,21 @@ Follow the steps below to run the apllication in the cloud using Hasura Cloud, Y
     autoSave=true
     /vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
+
+## Application Architectural Overview
+
+![app_architecture_diagram](images/cloud_architecture.png)
+
+| Service             | Functionality                                                                |
+| --------------------| ---------------------------------------------------------------------------- |
+| Yugabyte Cloud      | PIM, Cart Management, User Management, User Authentication, Order Management |
+| Hasura Cloud        | Business Logic Routing, Unified API, Access Control Management               |
+| Vercel for NextJS   | Serverless business logic handlers, web application framework                |
+| Stripe              | Payment handling                                                             |
+
+## Cloud Deployment
+
+Follow the steps below to run the apllication in the cloud using Hasura Cloud, Yugabyte Cloud and Vercel.
 
 ## Configure Hasura Cloud and Yugabyte Cloud
 

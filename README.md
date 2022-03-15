@@ -11,7 +11,6 @@ The Hasura and Yugabyte e-commerce app is a full featured reference application 
   - [Run Application Locally](#run-application-locally)
   - [Run Application in Cloud](#run-application-in-cloud)
   - [Start Application in Cloud](#start-application-in-cloud)
-  - [Application Technical Overview](#application-technical-overview)
   - [Application Architectural Overview](#application-architectural-overview)
     - [Authentication Flow](#authentication-flow)
     - [Checkout Flow](#checkout-flow)
@@ -51,21 +50,10 @@ Follow [these steps](RUN_LOCAL.md) to start the application in a local environme
 
 Follow [these steps](RUN_CLOUD.md) to start the application in the cloud.
 
-## Application Technical Overview
-This example is a dockerized project with the following services: Postgres, GraphQL Engine, Minio, and Next.js. The project has one external service dependency for payment handling, which we've chosen to implement with Stripe. User authentication and authorization, cart management, order management and product information management is stored in Postgres and architected through Hasura GraphQL Engine. Minio is utilized for asset storage as it implements a common S3 interface.
-
-| Service  | Functionality                                                                | Licensing |
-| -------- | ---------------------------------------------------------------------------- | --------- |
-| Postgres | PIM, Cart Management, User Management, User Authentication, Order Management | OSS       |
-| Hasura   | Business Logic Routing, Unified API, Access Control Management               | OSS       |
-| NextJS   | Serverless business logic handlers, web application framework                | OSS       |
-| Minio    | S3-compatible object storage (file and image upload)                         | OSS       |
-| Stripe   | Payment handling                                                             | Freemium  |
-
 ## Application Architectural Overview
-See the [Architecture Documentation.](Architecture.md)
 
-![app_architecture_diagram](https://user-images.githubusercontent.com/26604994/125822010-95b16d9a-2c0e-49ce-ad99-f7c6cca6e588.png)
+* An architecure of [the on-prem/local deployment](RUN_LOCAL.md).
+* An architecture of [the cloud native deployment](RUN_CLOUD.md).
 
 ### Authentication Flow
 

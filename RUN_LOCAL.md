@@ -1,4 +1,34 @@
-# Local Deployment
+# On-Prem E-Commerce Application
+
+This example is a dockerized project with the following services: Postgres or YugabyteDB, GraphQL Engine, Minio, and Next.js. The project has one external service dependency for payment handling, which we've chosen to implement with Stripe. User authentication and authorization, cart management, order management and product information management is stored in Postgres or YugabyteDB and architected through Hasura GraphQL Engine. Minio is utilized for asset storage as it implements a common S3 interface.
+
+<!-- vscode-markdown-toc -->
+
+- [On-Prem E-Commerce Application](#on-prem-e-commerce-application)
+- [Application Architectural Overview](#application-architectural-overview)
+- [Local Deployment](#local-deployment)  
+
+<!-- vscode-markdown-toc-config
+    numbering=false
+    autoSave=true
+    /vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+## Application Architectural Overview
+
+See the [Architecture Documentation.](Architecture.md)
+
+![app_architecture_diagram](https://user-images.githubusercontent.com/26604994/125822010-95b16d9a-2c0e-49ce-ad99-f7c6cca6e588.png)
+
+| Service                | Functionality                                                                | Licensing |
+| -----------------------| ---------------------------------------------------------------------------- | --------- |
+| Postgres or YugabyteDB | PIM, Cart Management, User Management, User Authentication, Order Management | OSS       |
+| Hasura                 | Business Logic Routing, Unified API, Access Control Management               | OSS       |
+| NextJS                 | Serverless business logic handlers, web application framework                | OSS       |
+| Minio                  | S3-compatible object storage (file and image upload)                         | OSS       |
+| Stripe                 | Payment handling                                                             | Freemium  |
+
+## Local Deployment
 
 Follow the steps below to run the apllication locally with Docker using PostgreSQL and YugabyteDB as a database:
 
