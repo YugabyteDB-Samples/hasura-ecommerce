@@ -10,7 +10,6 @@ The Hasura and Yugabyte e-commerce app is a full featured reference application 
   - [Setup Project](#setup-project)
   - [Run Application Locally](#run-application-locally)
   - [Run Application in Cloud](#run-application-in-cloud)
-  - [Start Application in Cloud](#start-application-in-cloud)
   - [Application Architectural Overview](#application-architectural-overview)
     - [Authentication Flow](#authentication-flow)
     - [Checkout Flow](#checkout-flow)
