@@ -37,7 +37,7 @@ Follow the steps below to run the apllication in the cloud using Hasura Cloud, Y
 
 ## Configure Hasura Cloud and Yugabyte Cloud
 
-1. [Interconnect](https://docs.yugabyte.com/latest/yugabyte-cloud/cloud-examples/hasura-cloud/) your Hasura Cloud and Yugabyte Cloud instances.
+1. [Deploy and interconnect](https://docs.yugabyte.com/latest/yugabyte-cloud/cloud-examples/hasura-cloud/) your Hasura Cloud and Yugabyte Cloud instances.
 
 2. Navigate to the `hasura` directory:
     ```bash
