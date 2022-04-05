@@ -11,7 +11,8 @@ services:
                 "--webserver_port=7001",
                 "--master_addresses=yb-master-n1:7100",
                 "--rpc_bind_addresses=yb-master-n1:7100",
-                "--replication_factor=1"]
+                "--replication_factor=1",
+                "--ysql_num_shards_per_tserver=1"]
       ports:
       - "7001:7001"
       environment:
@@ -28,7 +29,8 @@ services:
                 "--webserver_port=9001",
                 "--start_pgsql_proxy",
                 "--rpc_bind_addresses=yb-tserver-n1:9100",
-                "--tserver_master_addrs=yb-master-n1:7100"]
+                "--tserver_master_addrs=yb-master-n1:7100",
+                "--ysql_num_shards_per_tserver=1"]
       ports:
       - "5433:5433"
       - "9001:9001"
