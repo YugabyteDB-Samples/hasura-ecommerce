@@ -1,7 +1,6 @@
-# Hasura and Yugabyte E-Commerce Application
+# Hasura E-commerce Application
 
-The Hasura and Yugabyte e-commerce app is a full featured reference application demonstrating many of the powerful featues of Hasura's GraphQL Engine and Yugabyte distributed database. 
-[Here](https://github.com/hasura/hasura-ecommerce) you can find the original version of the application that uses PostgreSQL as a database and supports only the on-prem deployment option of Hasura.
+This is a comprehensive (real-world) e-commerce application that was [originially developed](https://github.com/hasura/hasura-ecommerce) by the Hasura team. The original version of the app that uses PostgreSQL as a database and supports only the on-prem deployment option of Hasura. This repository adds instructions explaining how to start the app with YugabyteDB, with no code changes!
 
 <!-- vscode-markdown-toc -->
 
