@@ -1,4 +1,4 @@
-# Sample GraphQL Application With YugabyteDB and Hasura
+# E-commerce App With YugabyteDB and Hasura GraphQL
 
 This is a comprehensive (real-world) e-commerce application that was [originially developed](https://github.com/hasura/hasura-ecommerce) by the Hasura team. The original version of the app that uses PostgreSQL as a database and supports only the on-prem deployment option of Hasura. This repository adds instructions explaining how to start the app with YugabyteDB, with no code changes!
 
