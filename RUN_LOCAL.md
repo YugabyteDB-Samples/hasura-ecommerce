@@ -39,16 +39,29 @@ Follow the steps below to run the apllication locally with Docker using PostgreS
 
 2. Start the application using YugabyteDB or PostgreSQL as a database:
 
-    For on-prem *PostgreSQL* deployment:
+If you already have a Postgres or YugabyteDB instance running locally, then:
+
+* Double check the following two variables in the `docker-compose-local.yaml` file:
+    ```yaml
+    HASURA_GRAPHQL_DATABASE_URL
+    PG_DATABASE_URL
+    ```
+* Start the app:
+    ```bash
+    docker-compose -f docker-compose-local.yaml up
+    ```
+
+Alternatively, you can start the app with a database instance running alongside in the container:
+
+* For on-prem *PostgreSQL* deployment:
     ```bash
     docker-compose -f docker-compose-postgres.yaml up
     ```
-
-    For on-prem *YugabyteDB* deployment:
+* For on-prem *YugabyteDB* deployment:
     ```bash
     docker-compose -f docker-compose-yugabyte.yaml up
     ```
- 
+
 3. Navigate to the `hasura` directory:
     ```bash
     cd hasura
